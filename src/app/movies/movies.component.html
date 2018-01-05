@@ -1,0 +1,12 @@
+<div class="container">
+    <hr>
+    <app-movie-row *ngFor="let movie of movies" [movieRow]="movie">
+    </app-movie-row>
+    <!-- ovo su ovi iz vivify cini mi se malo zakomplikovali, ja mislim da je jednostavnije ovako (sto ne znaci da je i bolje):
+    
+    <app-movie-row [movies]="movies">
+    </app-movie-row>
+
+    dakle, jednostavno prosledjujes kompletan niz preko inputa pa nek movie-row komponenta odradi sama logiku
+     -->
+</div>

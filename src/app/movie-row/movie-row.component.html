@@ -1,0 +1,27 @@
+<ul class="list-group">
+    <li class="list-group-item active">
+        {{ movieRow.name }}
+    </li>
+    <li>
+        <img src="{{ movieRow.imageUrl }}">
+    </li>
+    <li class="list-group-item">
+        {{ movieRow.director }}
+    </li>
+    <li class="list-group-item">
+        <small>
+            {{ movieRow.duration }}
+        </small>
+    </li>
+    <li class="list-group-item">
+        <small>
+            {{ movieRow.releseDate | date: 'dd/MM/yyyy' }}
+        </small>
+    </li>
+    <li class="list-group-item">
+        <small>
+            {{ movieRow.genres }}
+        </small>
+    </li>
+    <hr>
+</ul>

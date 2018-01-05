@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { MoviesComponent } from './movies/movies.component';
 import { SharedModule } from './shared/shared.module';
+import { MovieRowComponent } from './movie-row/movie-row.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
-    MoviesComponent
+    MoviesComponent,
+    MovieRowComponent
   ],
   imports: [
     BrowserModule,
