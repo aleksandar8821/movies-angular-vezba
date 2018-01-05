@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { MoviesComponent } from './movies/movies.component';
 import { SharedModule } from './shared/shared.module';
+import { SearchModule } from './search/search.module';
 import { MovieRowComponent } from './movie-row/movie-row.component';
 
 @NgModule({
@@ -18,7 +19,8 @@ import { MovieRowComponent } from './movie-row/movie-row.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    SearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]
