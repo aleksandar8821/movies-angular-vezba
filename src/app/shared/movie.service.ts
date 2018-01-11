@@ -33,10 +33,39 @@ export class MovieService {
   	})
   }
 
+  public search(term: string){
+    return new Observable((o: Observer<any>) => {
+      const foundMovies = this.movieList.filter((movie) => {
+        return movie.name.toLocaleLowerCase().includes(term.toLocaleLowerCase())
+      })
+
+      if(foundMovies.length === 0){
+        o.error(term)
+      }else{
+        o.next(foundMovies);
+        
+      }
+      
+
+    })   
+  }
+
+
   // Ovako su uradili ovi iz vivify
   // public getMovies():Observable<Movie[]>{
   // 	return Observable.of(this.movieList)
   // }
 
+  // public search(term){
+  //   const foundMovies = this.movieList.filter((movie: Movie) => {
+  //     return movie.name.toLocaleLowerCase().includes(term.toLocaleLowerCase())
+  //     // Ovo je pitanje kad treba da se koristi toLocaleLowerCase a kad toLowerCase
+  //   })
 
+  //   if(foundMovies.length === 0){
+  //     return Observable.throw(term)
+  //   }
+
+  //   return Observable.of(foundMovies)
+  // }
 }
