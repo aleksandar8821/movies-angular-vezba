@@ -23,5 +23,6 @@
             {{ movieRow.genres }}
         </small>
     </li>
+    <button class="btn btn-secondary" (click)="addMovie(true)" [disabled]="clicked">Select me!</button>
     <hr>
 </ul>
