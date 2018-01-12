@@ -2,7 +2,13 @@
 	<hr>
 			Rezultati pretrage za termin <b>{{term}}</b>:
 			<hr>
-			<app-movie-row *ngFor="let movie of movies" [movieRow]="movie"></app-movie-row>
+			<div *ngIf="counter > 0; then selectedBlock">Ovaj kompletan div se ignorise i neces ga imati u DOM-u</div>
+			<ng-template #selectedBlock>
+				<p>Trenutno je selektovano: {{ counter }} filmova</p>
+		    <hr>
+	    </ng-template>
+
+			<app-movie-row (onClicked)="onClicked2($event)" *ngFor="let movie of movies" [movieRow]="movie"></app-movie-row>
 
 
 </div>

@@ -13,6 +13,8 @@ export class SearchPageComponent implements OnInit {
 
 	private movies: Array<Movie>
 	private term: string
+	public counter = 0;
+
 
   constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { }
 
@@ -28,5 +30,10 @@ export class SearchPageComponent implements OnInit {
   		this.router.navigate(['movies'])
   	})
   }
+
+  public onClicked2(agreed: boolean) {
+    this.counter++;
+  }
+
 
 }
