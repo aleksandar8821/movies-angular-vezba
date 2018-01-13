@@ -5,8 +5,14 @@
 	    <hr>
     </div>
 
+		<button class="btn btn-primary" (click)="selectedAll = true" (click)="selectAll()">Select all</button>
 
-    <app-movie-row (onClicked)="onClicked2($event)" *ngFor="let movie of movies" [movieRow]="movie">
+		<button class="btn btn-primary" (click)="selectedAll = false" (click)="selectedAny = false" (click)="deselectAll()">Deselect all</button>
+
+		<br>
+		<br>
+
+    <app-movie-row (onClicked)="onClicked2($event)" *ngFor="let movie of movies" [movieRow]="movie" [selectedAll]="selectedAll" [selectedAny]="selectedAny">
     </app-movie-row>
     <!-- ovo su ovi iz vivify cini mi se malo zakomplikovali, ja mislim da je jednostavnije ovako (sto ne znaci da je i bolje):
     
