@@ -8,9 +8,14 @@
 		    <hr>
 	    </ng-template>
 
-	    
+	    <button class="btn btn-primary" (click)="selectAll()">Select all</button>
 
-			<app-movie-row (onClicked)="onClicked2($event)" *ngFor="let movie of movies" [movieRow]="movie"></app-movie-row>
+	    <button class="btn btn-primary" (click)="selectedAll = false" (click)="selectedAny = false" (click)="deselectAll()">Deselect all</button>
+
+			<br>
+			<br>
+
+			<app-movie-row (onClicked)="onClicked2($event)" *ngFor="let movie of movies" [movieRow]="movie" [selectedAll] = "selectedAll" [selectedAny] = "selectedAny"></app-movie-row>
 
 
 </div>

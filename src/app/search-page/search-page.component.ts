@@ -15,6 +15,9 @@ export class SearchPageComponent implements OnInit {
 	private term: string
 	public counter = 0;
 
+	public selectedAll = false
+	public selectedAny = false
+
 
   constructor(private movieService: MovieService, private route: ActivatedRoute, private router: Router) { }
 
@@ -33,7 +36,17 @@ export class SearchPageComponent implements OnInit {
 
   public onClicked2(agreed: boolean) {
     this.counter++;
+    this.selectedAny = true
   }
 
+  public selectAll(){
+  	this.counter = this.movies.length
+  	this.selectedAll = true
+  }
+
+  public deselectAll(){
+  	this.counter = 0
+  	// selectedAll i selectedAny su podeseni na false u okviru button click handlera, cisto da se pokaze da moze i tako
+  }
 
 }
