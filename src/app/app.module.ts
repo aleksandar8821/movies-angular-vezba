@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { OrderModule } from 'ngx-order-pipe';
+
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -20,7 +22,8 @@ import { SearchModule } from './search/search.module';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    SearchModule
+    SearchModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

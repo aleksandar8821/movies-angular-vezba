@@ -9,10 +9,18 @@
 
 		<button class="btn btn-primary" (click)="selectedAll = false" (click)="selectedAny = false" (click)="deselectAll()">Deselect all</button>
 
+		<button class="btn btn-primary" [class.active]="order === 'name'" (click)="setOrder('name')">
+        Sort by name
+    </button>
+    <button class="btn btn-primary" [class.active]="order === 'duration'" (click)="setOrder('duration')">
+        Sort by duration
+    </button>
+
+
 		<br>
 		<br>
 
-    <app-movie-row (onClicked)="onClicked2($event)" *ngFor="let movie of movies" [movieRow]="movie" [selectedAll]="selectedAll" [selectedAny]="selectedAny">
+    <app-movie-row (onClicked)="onClicked2($event)" *ngFor="let movie of movies | orderBy: order : reverse" [movieRow]="movie" [selectedAll]="selectedAll" [selectedAny]="selectedAny">
     </app-movie-row>
     <!-- ovo su ovi iz vivify cini mi se malo zakomplikovali, ja mislim da je jednostavnije ovako (sto ne znaci da je i bolje):
     

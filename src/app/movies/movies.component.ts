@@ -16,6 +16,11 @@ export class MoviesComponent implements OnInit {
   public selectedAny = false // ovaj selectedAny moras imati, jer ako selektujes samo neke filmove i stisnes Deselect all, ti navodno podesavas selectedAll na false koji je vec podesen na false po defaultu, tako da ga NE MENJAS, a ako ga ne menjas ngOnChanges se nece okinuti!
   public selectedAll = false
 
+  public order = 'name';
+  public reverse = false;
+
+
+
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
@@ -43,6 +48,17 @@ export class MoviesComponent implements OnInit {
 // ovo ti je sad suvisno, jer vec u okviru buttona imas click handler koji ti podesava selectedAll i selectedAny na false, al moze i ovako:
     this.selectedAny = false
     this.selectedAll = false
+  }
+
+
+  // install pipe with npm install  ngx-order-pipe --save
+  // documentation https://github.com/VadimDez/ngx-order-pipe
+
+  public setOrder(value: string) {
+      if (this.order === value) {
+          this.reverse = !this.reverse;
+      }
+      this.order = value;
   }
 
 
