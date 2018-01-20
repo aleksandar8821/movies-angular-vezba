@@ -6,6 +6,7 @@ import { Movie } from '../shared/models/movie';
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
+
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
@@ -16,9 +17,15 @@ export class MoviesComponent implements OnInit {
   public selectedAny = false // ovaj selectedAny moras imati, jer ako selektujes samo neke filmove i stisnes Deselect all, ti navodno podesavas selectedAll na false koji je vec podesen na false po defaultu, tako da ga NE MENJAS, a ako ga ne menjas ngOnChanges se nece okinuti!
   public selectedAll = false
 
+  // za sortiranje
   public order = 'name';
   public reverse = false;
 
+  // za skrolovanje
+  public itemsToShow: Array<Movie>
+  public isFullListDisplayed: boolean = false;
+  private noOfItemsToShowInitially: number = 2;
+  private itemsToLoad: number = 2
 
 
   constructor(private movieService: MovieService) { }
@@ -27,10 +34,13 @@ export class MoviesComponent implements OnInit {
   	this.movieService.getMovies().subscribe(data => {
   		this.movies = data
   		console.log(this.movies);
+      this.itemsToShow = this.movies.slice(0, this.noOfItemsToShowInitially);
   	})
 
 
   }
+
+  
 
   public onClicked2(selected: boolean){
     this.counter++
@@ -61,5 +71,20 @@ export class MoviesComponent implements OnInit {
       this.order = value;
   }
 
+  // skrolovanje
+  // instalacija npm install ngx-infinite-scroll --save
+  // dokumentacija: https://www.npmjs.com/package/ngx-infinite-scroll, kao i https://github.com/orizens/ngx-infinite-scroll
+  
+  // kod koji je koriscen ALI promenjen malo za moje potrebe https://stackoverflow.com/questions/47326279/how-to-implement-on-scrolldown-pagination-in-angular-4
+  
+  onScroll() {
+    if(this.noOfItemsToShowInitially <= this.movies.length) {
+      this.noOfItemsToShowInitially += this.itemsToLoad;
+      this.itemsToShow = this.movies.slice(0, this.noOfItemsToShowInitially);
+      console.log("scrolled");
+    } else {
+      this.isFullListDisplayed = true;
+    }
+  }
 
 }

@@ -1,4 +1,9 @@
-<div class="container">
+<div id="scrollingDiv" class="container"
+		infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()"
+    [infiniteScrollDisabled]="isFullListDisplayed">
     <hr>
     <div *ngIf="counter > 0">
 	    <p>Trenutno je selektovano: {{ counter }} filmova</p>
@@ -16,11 +21,10 @@
         Sort by duration
     </button>
 
-
 		<br>
 		<br>
 
-    <app-movie-row (onClicked)="onClicked2($event)" *ngFor="let movie of movies | orderBy: order : reverse" [movieRow]="movie" [selectedAll]="selectedAll" [selectedAny]="selectedAny">
+    <app-movie-row (onClicked)="onClicked2($event)" *ngFor="let movie of itemsToShow | orderBy: order : reverse" [movieRow]="movie" [selectedAll]="selectedAll" [selectedAny]="selectedAny">
     </app-movie-row>
     <!-- ovo su ovi iz vivify cini mi se malo zakomplikovali, ja mislim da je jednostavnije ovako (sto ne znaci da je i bolje):
     
@@ -29,4 +33,5 @@
 
     dakle, jednostavno prosledjujes kompletan niz preko inputa pa nek movie-row komponenta odradi sama logiku, MADA samo ime movieRow naglasava da je to komponenta KOJA CE SE SAMA PONOVITI VISE PUTA, pa je stoga logicno ovo sto su ovi iz vivify uradili
      -->
+	  
 </div>

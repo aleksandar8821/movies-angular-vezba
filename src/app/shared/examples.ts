@@ -3,7 +3,7 @@ export const movieList = [
         id: 1,
         name: 'Rane',
         director: 'Pera Peric',
-        imageUrl: 'http://lorempixel.com/400/200',
+        imageUrl: '',
         duration: 120,
         releseDate: new Date('12.02.1999'),
         genres: [
@@ -15,7 +15,7 @@ export const movieList = [
         id: 2,
         name: 'Mrtav ladan',
         director: 'Djura Djuric',
-        imageUrl: 'http://lorempixel.com/400/200',
+        imageUrl: '',
         duration: 125,
         releseDate: new Date('12.01.2002'),
         genres: [

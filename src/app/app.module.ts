@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { OrderModule } from 'ngx-order-pipe';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 import { AppComponent } from './app.component';
@@ -23,7 +24,8 @@ import { SearchModule } from './search/search.module';
     AppRoutingModule,
     SharedModule,
     SearchModule,
-    OrderModule
+    OrderModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]
