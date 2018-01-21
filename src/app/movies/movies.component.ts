@@ -12,11 +12,17 @@ export class MoviesComponent implements OnInit {
 
 	private movies: Array<Movie> //ovi iz vivify su ovde i inicijalizovali ovo na prazan niz, ne znam koliko to treba, meni radi i bez toga (https://gitlab.com/vivify-ideas/vivifyacademy-advanced-angular-movies/commit/bdb9ac5436c9f32728ef33e2549e350fa8e82002#b8d7997efd673eb17279a81145dc913f2fe4d39b)
 
+  // property u kojem ce biti filmovi koji se prikazuju preko load more button-a
+  private showedMovies: Array<Movie>
+  readonly moviesLoadNumber = 2
+  private showedMoviesNumber: number = 0
+
+
   public counter = 0;
   public selectedAny = false // ovaj selectedAny moras imati, jer ako selektujes samo neke filmove i stisnes Deselect all, ti navodno podesavas selectedAll na false koji je vec podesen na false po defaultu, tako da ga NE MENJAS, a ako ga ne menjas ngOnChanges se nece okinuti!
   public selectedAll = false
 
-  public order = 'name';
+  public order = 'id';
   public reverse = false;
 
 
@@ -27,6 +33,7 @@ export class MoviesComponent implements OnInit {
   	this.movieService.getMovies().subscribe(data => {
   		this.movies = data
   		console.log(this.movies);
+      this.loadMovies()
   	})
 
 
@@ -62,4 +69,8 @@ export class MoviesComponent implements OnInit {
   }
 
 
+  public loadMovies(){
+    this.showedMoviesNumber += this.moviesLoadNumber
+    this.showedMovies = this.movies.slice(0, this.showedMoviesNumber)
+  }
 }
